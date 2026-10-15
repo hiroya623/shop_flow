@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFlow 商品一覧</title>
+</head>
+
+<body>
+    <h1>商品一覧</h1>
+
+    <!-- ログイン中のユーザーが商品を閲覧するための一覧画面。 -->
+    <p>商品を選択すると、商品の詳細を確認できます。</p>
+
+    <!-- 商品が1件も登録されていない場合に案内を表示する。 -->
+    <p th:if="${#lists.isEmpty(products)}">
+        現在、表示できる商品はありません。
+    </p>
+
+    <!-- 取得した商品を1件ずつ表形式で表示する。 -->
+    <table th:unless="${#lists.isEmpty(products)}" border="1">
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>商品説明</th>
+                <th>価格（円）</th>
+                <th>在庫数</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td>
+                    <!-- 商品名から該当商品の詳細画面へ移動する。 -->
+                    <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.name}">
+                        商品名
+                    </a>
+                </td>
+
+                <!-- 商品説明が未入力の場合は「説明なし」と表示する。 -->
+                <td th:text="${#strings.isEmpty(product.description)
+                              ? '説明なし'
+                              : product.description}">
+                    商品説明
+                </td>
+
+                <!-- 商品の販売価格を円単位で表示する。 -->
+                <td th:text="${product.price}">0</td>
+
+                <!-- 現在登録されている在庫数を表示する。 -->
+                <td th:text="${product.stockQuantity}">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ダッシュボードへ戻る。 -->
+    <p>
+        <a th:href="@{/dashboard}">ダッシュボードへ戻る</a>
+    </p>
+
+    <!-- ログアウト用フォーム。Spring SecurityのCSRF対策に対応する。 -->
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">ログアウト</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFlow 商品詳細</title>
+</head>
+
+<body>
+    <h1>商品詳細</h1>
+
+    <!-- コントローラーから渡された商品情報を表示する。 -->
+    <section th:object="${product}">
+
+        <!-- 商品の基本情報を表示する。 -->
+        <h2 th:text="*{name}">商品名</h2>
+
+        <dl>
+            <dt>商品説明</dt>
+            <!-- 商品説明が未入力の場合も、画面が崩れないようにする。 -->
+            <dd th:text="${#strings.isEmpty(product.description)
+                          ? '説明なし'
+                          : product.description}">
+                商品説明
+            </dd>
+
+            <dt>価格（円）</dt>
+            <dd th:text="*{price}">0</dd>
+
+            <dt>在庫数</dt>
+            <dd th:text="*{stockQuantity}">0</dd>
+        </dl>
+    </section>
+
+    <!-- 商品一覧画面へ戻る。 -->
+    <p>
+        <a th:href="@{/products}">商品一覧へ戻る</a>
+    </p>
+
+    <!-- ダッシュボードへ戻る。 -->
+    <p>
+        <a th:href="@{/dashboard}">ダッシュボードへ戻る</a>
+    </p>
+
+    <!-- ログアウト用フォーム。Spring SecurityのCSRF対策に対応する。 -->
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">ログアウト</button>
+    </form>
+</body>
+
+</html>
