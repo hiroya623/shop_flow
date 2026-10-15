@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFlow 商品登録・編集</title>
+</head>
+
+<body>
+    <h1>商品登録・編集</h1>
+
+    <!-- 商品IDがある場合は編集、ない場合は新規登録として扱う。 -->
+    <form th:object="${product}" th:action="${product.id != null
+                      ? '/admin/products/' + product.id + '/edit'
+                      : '/admin/products'}" method="post">
+
+        <!-- 入力エラーがある場合に、全体向けのメッセージを表示する。 -->
+        <div th:if="${#fields.hasAnyErrors()}">
+            <p>入力内容を確認してください。</p>
+        </div>
+
+        <!-- 入力項目に関連付かない、全体向けのエラーを表示する。 -->
+        <ul th:if="${#fields.hasGlobalErrors()}">
+            <li th:each="error : ${#fields.globalErrors()}" th:text="${error}">
+            </li>
+        </ul>
+
+        <div>
+            <!-- 商品名を入力する。最大100文字。 -->
+            <label for="name">商品名：</label>
+            <input type="text" id="name" th:field="*{name}" maxlength="100" required>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </div>
+
+        <div>
+            <!-- 商品の説明を入力する。最大1000文字。 -->
+            <label for="description">商品説明：</label>
+            <textarea id="description" th:field="*{description}" maxlength="1000"></textarea>
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+        </div>
+
+        <div>
+            <!-- 商品の価格を円単位で入力する。0円以上。 -->
+            <label for="price">価格（円）：</label>
+            <input type="number" id="price" th:field="*{price}" min="0" required>
+            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+        </div>
+
+        <div>
+            <!-- 商品の在庫数を入力する。0個以上。 -->
+            <label for="stockQuantity">在庫数：</label>
+            <input type="number" id="stockQuantity" th:field="*{stockQuantity}" min="0" required>
+            <p th:if="${#fields.hasErrors('stockQuantity')}" th:errors="*{stockQuantity}"></p>
+        </div>
+
+        <!-- IDの有無に応じて登録・更新ボタンの表示を変更する。 -->
+        <button type="submit" th:text="${product.id != null ? '変更を保存' : '商品を登録'}">
+            商品を登録
+        </button>
+    </form>
+
+    <!-- 商品一覧画面へ戻る。 -->
+    <p>
+        <a th:href="@{/admin/products}">商品一覧へ戻る</a>
+    </p>
+</body>
+
+</html>
