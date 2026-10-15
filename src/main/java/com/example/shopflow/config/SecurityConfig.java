@@ -48,19 +48,24 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
 
-        // URLごとのアクセス権限を設定する。
+        // URLごとにアクセスできるユーザーの権限を設定する。
         http.authorizeHttpRequests(authorize -> authorize
 
-                // 会員登録ページとログインページは誰でもアクセス可能。
+                // 会員登録画面とログイン画面は未ログインでも利用できる。
                 .requestMatchers("/register", "/login").permitAll()
 
-                // CSS・JavaScript・画像などの静的ファイルも公開する。
+                // CSS・JavaScript・画像などの静的ファイルは公開する。
                 .requestMatchers("/css/**", "/js/**", "/images/**")
                 .permitAll()
+
+                // 管理者向けURLはADMIN権限を持つユーザーだけに許可する。
+                // hasRole("ADMIN")はROLE_ADMINという権限を確認する。
+                .requestMatchers("/admin/**").hasRole("ADMIN")
 
                 // 上記以外のページはログイン済みのユーザーに限定する。
                 .anyRequest().authenticated()
         );
+
 
         // ログイン画面とログイン成功後の動作を設定する。
         http.formLogin(form -> form
