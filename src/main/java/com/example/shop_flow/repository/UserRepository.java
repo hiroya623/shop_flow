@@ -1,11 +1,11 @@
 
-package com.example.shopflow.repository;
+package com.example.shop_flow.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.shopflow.entity.User;
+import com.example.shop_flow.entity.User;
 
 /**
  * 会員情報をデータベースから検索・保存するためのRepositoryクラス。

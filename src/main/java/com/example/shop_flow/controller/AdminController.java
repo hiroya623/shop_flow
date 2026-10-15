@@ -1,5 +1,5 @@
 
-package com.example.shopflow.controller;
+package com.example.shop_flow.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

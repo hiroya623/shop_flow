@@ -1,5 +1,5 @@
 
-package com.example.shopflow.service;
+package com.example.shop_flow.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.example.shopflow.entity.Product;
-import com.example.shopflow.repository.ProductRepository;
+import com.example.shop_flow.entity.Product;
+import com.example.shop_flow.repository.ProductRepository;
 
 /**
  * ShopFlowの商品管理に関する業務処理を担当するサービス。

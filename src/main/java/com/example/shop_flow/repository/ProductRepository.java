@@ -1,12 +1,12 @@
 
-package com.example.shopflow.repository;
+package com.example.shop_flow.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.shopflow.entity.Product;
+import com.example.shop_flow.entity.Product;
 
 /**
  * ShopFlowの商品データをデータベースから検索・保存するリポジトリ。

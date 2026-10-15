@@ -1,5 +1,5 @@
 
-package com.example.shopflow.entity;
+package com.example.shop_flow.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

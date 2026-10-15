@@ -1,12 +1,12 @@
 
-package com.example.shopflow.service;
+package com.example.shop_flow.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.shopflow.entity.User;
-import com.example.shopflow.repository.UserRepository;
+import com.example.shop_flow.entity.User;
+import com.example.shop_flow.repository.UserRepository;
 
 /**
  * 会員登録など、会員に関する業務処理を担当するServiceクラス。

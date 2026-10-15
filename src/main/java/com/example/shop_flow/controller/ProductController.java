@@ -1,8 +1,5 @@
 
-package com.example.shopflow.controller;
-
-import com.example.shopflow.entity.Product;
-import com.example.shopflow.service.ProductService;
+package com.example.shop_flow.controller;
 
 import jakarta.validation.Valid;
 
@@ -16,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.example.shop_flow.entity.Product;
+import com.example.shop_flow.service.ProductService;
 
 /**
  * ShopFlowの商品管理画面を制御するコントローラー。

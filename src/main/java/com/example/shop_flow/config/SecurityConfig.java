@@ -1,5 +1,5 @@
 
-package com.example.shopflow.config;
+package com.example.shop_flow.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,13 +1,13 @@
 
-package com.example.shopflow.service;
-
-import com.example.shopflow.entity.User;
-import com.example.shopflow.repository.UserRepository;
+package com.example.shop_flow.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.example.shop_flow.entity.User;
+import com.example.shop_flow.repository.UserRepository;
 
 /**
  * ShopFlowのログイン認証で使用するユーザー情報取得クラス。

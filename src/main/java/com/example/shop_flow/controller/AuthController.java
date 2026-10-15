@@ -1,12 +1,12 @@
 
-package com.example.shopflow.controller;
-
-import com.example.shopflow.service.UserService;
+package com.example.shop_flow.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.shop_flow.service.UserService;
 
 /**
  * ShopFlowの会員登録画面とログイン画面を制御するクラス。

@@ -1,4 +1,4 @@
-package com.example.shopflow;
+package com.example.shop_flow;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
