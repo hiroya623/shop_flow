@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ブラウザーのタブに表示するページ名 -->
+    <title>ダッシュボード | ShopFlow</title>
+</head>
+
+<body>
+    <main>
+        <h1>ShopFlow ダッシュボード</h1>
+
+        <!-- ログイン後に表示されるメッセージ -->
+        <p>ログインに成功しました。</p>
+
+        <!--
+            ログアウトはSpring Securityの標準処理に送信する。
+            POSTリクエストにすることで、ログアウト処理を安全に実行する。
+            ThymeleafとSpring Securityの連携により、
+            通常はCSRFトークンがフォームに追加される。
+        -->
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
+    </main>
+</body>
+
+</html>
